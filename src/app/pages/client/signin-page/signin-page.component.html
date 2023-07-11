@@ -1,0 +1,82 @@
+<section class="bg-gray-50 dark:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div
+            class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+            <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                    Sign in to your account
+                </h1>
+                <form class="space-y-4 md:space-y-6" nz-form [formGroup]="validateForm" class="login-form"
+                    (ngSubmit)="submitForm()">
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input your email!">
+                            <label for=""
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                            <nz-input-group nzPrefixIcon="mail">
+                                <input type="email" nz-input formControlName="email"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="name@company.com" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input your Password!">
+                            <label for=""
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                            <nz-input-group nzPrefixIcon="lock">
+                                <input type="password" nz-input formControlName="password"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Password" />
+                            </nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <div class="flex items-center justify-between mt-4">
+                        <div class="flex items-start my-4">
+                            <div class="flex items-center h-5">
+                                <input id="remember" aria-describedby="remember" type="checkbox"
+                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+                                    required="">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                            </div>
+                        </div>
+                        <!-- component forgotpassword -->
+                        <app-forgot-password></app-forgot-password>
+                    </div>
+                    <nz-form-item>
+                        <nz-form-control nzErrorTip="Please input your recaptcha!">
+                            <nz-input-group>
+                                <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha">
+                                </ngx-recaptcha2></nz-input-group>
+                        </nz-form-control>
+                    </nz-form-item>
+                    <button type="submit"
+                        class="my-4 w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Sign
+                        in</button>
+                </form>
+                <button (click)="loginWithFacebook()"
+                    class="my-4 w-full flex items-center justify-center px-4 py-2 space-x-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition duration-300 ease-in-out">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.08 0H1.92A1.92 1.92 0 0 0 0 1.92v18.16A1.92 1.92 0 0 0 1.92 22h9.4v-8.34H8.63v-3.25H11.3v-2.5c0-3.24 1.98-5 4.85-5 1.38 0 2.57.1 2.92.15v3.38l-1.99.001c-1.57 0-1.87.75-1.87 1.83v2.4h3.73l-.49 3.25h-3.24v8.34h6.34A1.92 1.92 0 0 0 24 19.08V1.92A1.92 1.92 0 0 0 22.08 0z" />
+                    </svg>
+                    <span>Đăng nhập bằng Facebook</span>
+                </button>
+                <asl-google-signin-button *ngIf="!user"></asl-google-signin-button>
+
+                <div *ngIf="user">
+                    <img src="{{ user.photoUrl }}">
+                    <div>
+                        <h4>{{ user.name }}</h4>
+                        <p>{{ user.email }}</p>
+                    </div>
+                </div>
+                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                    bạn chưa có tài khoản vui lòng? <a routerLink="/signup"
+                        class="font-medium text-primary-600 hover:underline dark:text-primary-500">đăng ký</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

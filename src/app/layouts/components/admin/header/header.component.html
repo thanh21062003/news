@@ -1,0 +1,72 @@
+<nz-layout>
+  <nz-header>
+    <div class="logo">
+      <a routerLink="/admin" class="flex items-center">
+        
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">admin</span>
+      </a>
+    </div>
+  </nz-header>
+  <nz-layout>
+    <nz-sider nzWidth="200px" nzTheme="light">
+      <ul nz-menu nzMode="inline" class="sider-menu">
+        <li nz-submenu nzOpen nzIcon="laptop" nzTitle="quản lý chung">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/posts">quản lý bài viết</a></li>
+            <li nz-menu-item><a routerLink="/admin/categories">quản lý danh mục</a></li>
+            <li nz-menu-item><a routerLink="/admin/tag">quản lý hashtag</a></li>
+            <li nz-menu-item><a routerLink="/admin/comments">quản lý bình luận</a></li>
+            <li nz-menu-item><a routerLink="/admin/contacts">quản lý liên hệ</a></li>
+            <li nz-menu-item><a routerLink="/admin/abouts">quản lý thông tin</a></li>
+            <li nz-menu-item><a routerLink="/admin/accounts">quản lý người dùng</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý bài viết" nzIcon="notification">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/posts">danh sách bài viết</a></li>
+            <li nz-menu-item><a routerLink="/admin/posts/add">thêm mới bài viết</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý danh mục" nzIcon="menu">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/categories">danh sách danh mục</a></li>
+            <li nz-menu-item><a routerLink="/admin/categories/add">thêm mới danh mục</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý hashtag" nzIcon="tags">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/tag">danh sách hashtag</a></li>
+            <li nz-menu-item><a routerLink="/admin/tag/add">thêm mới hashtag</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý bình luận" nzIcon="comment">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/comments">danh sách bình luận</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý liên hệ" nzIcon="phone">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/contacts">danh sách liên hệ</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý thông tin" nzIcon="info">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/abouts">thông tin của tôi</a></li>
+            <li nz-menu-item><a routerLink="/admin/abouts/add">thêm mới thông tin</a></li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="quản lý người dùng" nzIcon="user">
+          <ul>
+            <li nz-menu-item><a routerLink="/admin/accounts">danh sách người dùng</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout class="inner-layout">
+      <nz-content>
+        <router-outlet></router-outlet>
+      </nz-content>
+      <app-footer-admin></app-footer-admin>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

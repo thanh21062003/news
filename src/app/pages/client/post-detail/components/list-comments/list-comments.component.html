@@ -1,0 +1,11 @@
+<nz-list nzItemLayout="horizontal">
+  <nz-list-item>
+    <nz-list-item-meta *ngFor="let cmt of childData"
+      nzAvatar="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" nzDescription="{{cmt.content}}">
+      <nz-list-item-meta-title>
+        <a href="https://ng.ant.design">{{ cmt.post }}</a>
+      </nz-list-item-meta-title>
+    </nz-list-item-meta>
+  </nz-list-item>
+  <nz-list-empty *ngIf="childData.length === 0"></nz-list-empty>
+</nz-list>

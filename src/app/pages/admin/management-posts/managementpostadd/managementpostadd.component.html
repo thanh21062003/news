@@ -1,0 +1,85 @@
+<form class="space-y-4 md:space-y-6" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your title!">
+      <nz-input-group>
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">title</label>
+        <input type="text" nz-input formControlName="title"
+          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="title" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your content!">
+      <nz-input-group>
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">content</label>
+        <textarea formControlName="content" rows="4" nz-input></textarea>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your image!">
+      <nz-input-group>
+        <label for="images" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">image</label>
+        <input name="file" id="fileInput" type="file" nz-input
+          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="images" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your author!">
+      <nz-input-group>
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">author</label>
+        <input type="text" nz-input formControlName="author"
+          class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="author" />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your hashtag!">
+      <nz-input-group>
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">hashtag</label>
+        <nz-select nzShowSearch nzAllowClear formControlName="tags" [nzDropdownRender]="renderTemplate"
+          nzPlaceHolder="ấn vào để chọn hashtag">
+          <nz-option *ngFor="let item of listTags" [nzLabel]="item.name" [nzValue]="item._id"></nz-option>
+        </nz-select>
+        <ng-template #renderTemplate>
+          <nz-divider></nz-divider>
+          <div class="container">
+            <input type="text" nz-input #inputElement />
+            <a class="add-item" (click)="addHashtag(inputElement)">
+              <span nz-icon nzType="plus"></span>
+              thêm mới
+            </a>
+          </div>
+        </ng-template>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Please input your danh mục!">
+      <nz-input-group>
+        <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">danh mục</label>
+        <nz-select nzShowSearch nzAllowClear formControlName="CategoryId" [nzDropdownRender]="renderTemplate"
+          nzPlaceHolder="ấn vào để chọn danh mục">
+          <nz-option *ngFor="let item of listCates" [nzLabel]="item.name" [nzValue]="item._id"></nz-option>
+        </nz-select>
+        <ng-template #renderTemplate>
+          <nz-divider></nz-divider>
+          <div class="container">
+            <input type="text" nz-input #inputElement />
+            <a class="add-item" (click)="addCate(inputElement)">
+              <span nz-icon nzType="plus"></span>
+              thêm mới
+            </a>
+          </div>
+        </ng-template>
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <button class="bg-black w-[130px] text-white h-8" nz-type="primary">thêm mới</button>
+</form>

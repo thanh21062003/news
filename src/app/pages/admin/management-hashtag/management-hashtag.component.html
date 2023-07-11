@@ -1,0 +1,25 @@
+<nz-table #editRowTable nzBordered nzShowPagination [nzData]="listOfData">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>name</th>
+            <th>ngày tao</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of editRowTable.data" class="editable-row">
+            <td>{{ data._id }}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.createdAt }}</td>
+            <td class="flex space-x-4 py-2">
+                <button
+                    class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    nzType="primary" nz-popconfirm nzPopconfirmTitle="Bạn có chắc muốn xóa?"
+                    (nzOnConfirm)="deleteRow(data._id)">xóa</button>
+                <a class="py-2 px-4 border border-blue-500 rounded text-blue-500 hover:text-white hover:bg-blue-500 focus:outline-none focus:shadow-outline"
+                    nzType="primary" routerLink="/admin/tag/{{data._id}}/update">sửa</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

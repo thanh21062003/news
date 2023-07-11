@@ -1,0 +1,27 @@
+<nz-table #editRowTable nzBordered nzShowPagination [nzData]="listOfData">
+    <thead>
+        <tr>
+            <th nzWidth="5%">#</th>
+            <th nzWidth="30%">content</th>
+            <th nzWidth="10%">id bài viết</th>
+            <th>user</th>
+            <th>ngày gửi</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of editRowTable.data" class="editable-row">
+            <td>{{ data._id }}</td>
+            <td class="line-clamp-5">{{ data.content }}</td>
+            <td>{{ data.post }}</td>
+            <td>{{ data.user }}</td>
+            <td>{{ data.createdAt }}</td>
+            <td class="flex space-x-4 py-2">
+                <button
+                    class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+                    nzType="primary" nz-popconfirm nzPopconfirmTitle="Bạn có chắc muốn xóa?"
+                    (nzOnConfirm)="deleteRow(data._id)">xóa</button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

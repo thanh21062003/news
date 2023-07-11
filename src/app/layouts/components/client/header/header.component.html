@@ -1,0 +1,116 @@
+<div
+    class="shadow-lg bg-white dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="bg-white rounded shadow-lg py-5 px-7">
+        <nav class="flex justify-between">
+            <div class="flex items-center space-x-3 lg:pr-16 pr-6">
+                <div class="text-2xl font-bold text-gray-800 md:text-3xl">
+                    <a routerLink="/">Brand</a>
+                </div>
+            </div>
+            <!-- For medium and plus sized devices -->
+            <ul class="hidden md:flex flex-auto space-x-2">
+                <li (click)="isToggle = 1"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 1 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/" class="text-[15px] text-black">trang
+                        chủ</a>
+                <li (click)="isToggle = 2"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 2 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/post" class="text-[15px] text-black">tin
+                        tức</a>
+                </li>
+                <li (click)="isToggle = 3"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 3 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/about" class="text-[15px] text-black">thông
+                        tin</a>
+                </li>
+                <li (click)="isToggle = 4"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 4 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/contact" class="text-[15px] text-black">liên
+                        hệ</a>
+                </li>
+                <li (click)="isToggle = 5"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 5 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/signup" class="text-[15px] text-black">đăng
+                        ký</a>
+                </li>
+                <li (click)="isToggle = 5"
+                    [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 5 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                    <a routerLink="/signin" class="text-[15px] text-black">đăng
+                        nhập</a>
+                </li>
+            </ul>
+            <div class="flex items-center">
+                <input
+                    class="rounded-l-lg border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white px-2 py-2"
+                    [(ngModel)]="searchTerm" type="text" placeholder="Nhập từ khóa tìm kiếm...">
+                <button class="rounded-r-lg bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4"
+                    (click)="search()">Tìm kiếm</button>
+            </div>
+        </nav>
+        <div *ngIf="results" class="mx-4 my-16">
+            <div *ngIf="results.length > 0">
+                <div *ngFor="let post of results"
+                    class="p-4 border rounded shadow-md bg-white hover:bg-gray-100 transition-all duration-300 ease-in-out">
+                    <a href="/post/{{post._id}}">
+                        <h3 class="text-lg font-medium text-gray-800 hover:text-blue-500 transition-all duration-300">{{
+                            post.title }}</h3>
+                    </a>
+                </div>
+            </div>
+            <ng-template #noResults>
+                <div class="text-red-500">Không tìm thấy bài viết nào.</div>
+            </ng-template>
+        </div>
+        <!-- for smaller devcies -->
+        <div class="block md:hidden w-full mt-5">
+            <div (click)="selectorDropdown()"
+                class="cursor-pointer px-4 py-3 text-white bg-indigo-600 rounded flex justify-between items-center w-full">
+                <div class="flex space-x-2">
+                    <span class="font-semibold text-sm leading-3">menu: </span>
+                    <p id="textClicked"
+                        class="font-normal text-sm leading-3 focus:outline-none hover:bg-gray-800 duration-100 cursor-pointer">
+                        {{ selected }}</p>
+                </div>
+                <svg id="ArrowSVG" class="transform" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 9L12 15L18 9" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="relative">
+                <ul
+                    [ngClass]="'font-normal text-base leading-4 absolute top-2 w-full rounded shadow-md ' + (selector ? 'block' : 'hidden')">
+                    <li (click)="isToggle = 1"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 1 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/" class="text-[15px] text-black">trang
+                            chủ</a>
+                    <li (click)="isToggle = 2"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 2 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/post" class="text-[15px] text-black">tin
+                            tức</a>
+                    </li>
+                    <li (click)="isToggle = 3"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 3 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/about" class="text-[15px] text-black">thông
+                            tin</a>
+                    </li>
+                    <li (click)="isToggle = 4"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 4 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/contact" class="text-[15px] text-black">liên
+                            hệ</a>
+                    </li>
+                    <li (click)="isToggle = 5"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 5 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/signup" class="text-[15px] text-black">đăng
+                            ký</a>
+                    </li>
+                    <li (click)="isToggle = 5"
+                        [ngClass]="'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 cursor-pointer px-3 py-2.5 font-normal text-xs leading-3 shadow-md rounded ' + (isToggle === 5 ? 'text-white bg-indigo-600' : 'text-gray-600 border border-white bg-gray-50')">
+                        <a routerLink="/signin" class="text-[15px] text-black">đăng
+                            nhập</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

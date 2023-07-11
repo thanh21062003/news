@@ -1,0 +1,45 @@
+<section class="mt-[100px]">
+  <div class="relative container px-5 py-24 mx-auto">
+    <div>
+      <h1 class="text-2xl font-bold lg:text-2xl">{{childData.title}}</h1>
+      <p class="mt-1 text-sm text-gray-500">{{childData.createdAt}}</p>
+    </div>
+    <div class="grid gap-8 lg:grid-cols-4 lg:items-start">
+      <div class="lg:col-span-3">
+        <div class="relative mt-4">
+          <img class="h-72 w-full rounded-xl object-cover lg:h-[500px]" nz-image nzSrc="{{childData.images[0]}}"
+            alt="" />
+        </div>
+        <p class="mt-[16px] text-[18px]">
+          {{childData.content}}
+        </p>
+      </div>
+      <div class="lg:sticky lg:top-0">
+        <form class="space-y-4 lg:pt-8">
+          <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
+            <ul class="mt-1 flex gap-1">
+              <li class="grid grid-cols-2 gap-4" >
+                <img *ngFor="let item of childData.images" class="grid grid-cols-2 w-[300px] h-[300px] rounded-md object-cover" src="{{item}}" alt="" />
+              </li>
+            </ul>
+            <div class="bg-white p-4 sm:p-6">
+              <time datetime="2022-10-10" class="block text-xs text-gray-500">
+                {{childData.createdAt}}
+              </time>
+              <a href="#">
+                <h3 class="line-clamp-3 mt-0.5 text-lg text-gray-900">
+                  {{childData.title}}
+                </h3>
+              </a>
+
+              <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+                {{childData.content}}
+              </p>
+              <p>by {{childData.author}}</p>
+            </div>
+          </article>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

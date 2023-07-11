@@ -1,0 +1,9 @@
+<app-list-post-detail [childData]="postDetail.data"></app-list-post-detail>
+<!-- bv liên qua -->
+<app-listrelated-posts [childData]="postDetail.relatedPosts"></app-listrelated-posts>
+<!-- binh luan -->
+<div class="px-4 py-8 sm:px-6 lg:px-8">
+  <h2 class="text-xl font-bold sm:text-2xl">bình luận</h2>
+  <!-- <app-list-comments [childData]="postDetail.data.Comments"></app-list-comments> -->
+  <app-create-comment></app-create-comment>
+</div>
